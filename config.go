@@ -91,6 +91,14 @@ func Get(id string) interface{} {
 	return ret
 }
 
+func GetDefault(id string, def interface{}) interface{} {
+	if HasKey(id) {
+		return Get(id)
+	} else {
+		return def
+	}
+}
+
 func Set(id string, value interface{}) error {
 	if configs == nil {
 		configs = make(map[string]interface{})
